@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-01",
+  "method": "Chrome --remote-debugging-port=9222, separate signed-in profile, puppeteer-core and Chrome DevTools Protocol",
+  "session": {
+    "path": "/api/auth/session",
+    "status": 200,
+    "authenticated": true,
+    "tokenRetained": false
+  },
+  "history": {
+    "method": "GET",
+    "path": "/backend-api/conversations",
+    "observedQuery": "exclude_conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0",
+    "observedStatuses": [
+      200,
+      429
+    ],
+    "successSchema": [
+      "items",
+      "total",
+      "limit",
+      "offset"
+    ],
+    "firstPageCount": 20,
+    "reportedTotal": 21,
+    "headerNames": [
+      "authorization",
+      "chatgpt-account-id"
+    ],
+    "additionalProbe": "A read-only query without the origin exclusion also returned HTTP 200 with the same schema and total. Subsequent requests returned HTTP 429."
+  },
+  "deletion": {
+    "method": "DELETE",
+    "path": "/backend-api/conversation/id/{conversation_id}",
+    "evidence": "Loaded authenticated frontend source: Request.safeDelete(\"/conversation/id/{conversation_id}\", { parameters: { path: { conversation_id } } })",
+    "sourceAsset": "https://chatgpt.com/cdn/assets/698524.f39c40652f.js",
+    "realDeletionExecuted": false
+  },
+  "limitations": [
+    "Initial checks encountered HTTP 429; subsequent version 1.0.1 installed-extension UI verification completed successfully.",
+    "Deletion response contract tested with mock responses only."
+  ],
+  "privacy": "No cookies, tokens, user or account IDs, chat IDs, chat titles, or message content retained in this report.",
+  "followupVerification": {
+    "version": "1.0.1",
+    "installation": "Existing unpacked extension in Chrome",
+    "fix": "Treat each page total as a current pagination hint, not a fixed snapshot total.",
+    "observedRegularPageTotals": [
+      21,
+      41,
+      61
+    ],
+    "liveResult": {
+      "loaded": 230,
+      "keep": 230,
+      "delete": 0,
+      "errors": 0
+    },
+    "realDeletionExecuted": false
+  },
+  "groupingVerification": {
+    "version": "1.1.0",
+    "projectEndpoint": "GET /backend-api/gizmos/snorlax/sidebar?conversations_per_gizmo=0&limit=20&owned_only=false",
+    "loadedChats": 230,
+    "sections": 13,
+    "selectedForDeletion": 0,
+    "checks": {
+      "generalFirst": true,
+      "projectsAlphabetical": true,
+      "expandedByDefault": true,
+      "rowsPartitionCorrect": true,
+      "datesSorted": true,
+      "namedProjectGroups": 12
+    },
+    "errors": [],
+    "realDeletionExecuted": false
+  }
+}

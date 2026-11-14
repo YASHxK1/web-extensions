@@ -1,0 +1,144 @@
+{
+  "version": "1.2.0",
+  "provider": "Claude",
+  "method": "Chrome --remote-debugging-port=9222, Puppeteer, Chrome isolated-world execution, and loaded frontend source inspection",
+  "authentication": {
+    "credentialHandling": "Existing same-origin cookies; no session-key values read or retained",
+    "activeWorkspace": "lastActiveOrg cookie",
+    "sessionEndpoint": "GET /api/bootstrap/{org}/app_start?statsig_hashing_algorithm=djb2&growthbook_format=sdk&include_system_prompts=false",
+    "verifiedAccountFields": [
+      "account.uuid",
+      "account.memberships[].organization.uuid"
+    ],
+    "status": 200
+  },
+  "history": {
+    "endpoint": "GET /api/organizations/{org}/chat_conversations_v2",
+    "queryKeys": [
+      "limit",
+      "offset",
+      "archived",
+      "consistency"
+    ],
+    "verifiedResponseKeys": [
+      "data",
+      "has_more",
+      "search_incomplete"
+    ],
+    "normalAndArchivedVerified": true
+  },
+  "deletion": {
+    "endpoint": "DELETE /api/organizations/{org}/chat_conversations/{id}",
+    "sourceAsset": "https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/shared-m-1-BHsfkgZY.js",
+    "requestEvidence": "Frontend single-conversation mutation calls HP(route, \"DELETE\", options).",
+    "acknowledgementSource": "https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/shared-l-p-m-w-0-Ba3V8QrL.js",
+    "acknowledgementEvidence": "FE parser accepts empty DELETE response; otherwise parses JSON, and HTTP failures are handled by the request wrapper.",
+    "realDeletionExecuted": false,
+    "testing": "Success and failure acknowledgements tested with mocks only; no live DELETE sent.",
+    "requestBody": {
+      "uuid": "{conversation_id}"
+    },
+    "requestHeaders": {
+      "Content-Type": "application/json"
+    },
+    "mutationWrapperSource": "https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/shared-l-p-m-w-1-CpMfzjFo.js",
+    "mutationWrapperEvidence": "s4 JSON-stringifies transformed mutation variables, including uuid, and sends them with Content-Type application/json."
+  },
+  "liveReadVerification": {
+    "version": "1.2.0",
+    "method": "Production Claude adapter and paginator in Chrome isolated world",
+    "loaded": 182,
+    "archived": 0,
+    "pages": [
+      {
+        "archived": false,
+        "offset": 0,
+        "count": 20,
+        "hasMore": true
+      },
+      {
+        "archived": false,
+        "offset": 20,
+        "count": 20,
+        "hasMore": true
+      },
+      {
+        "archived": false,
+        "offset": 40,
+        "count": 20,
+        "hasMore": true
+      },
+      {
+        "archived": false,
+        "offset": 60,
+        "count": 20,
+        "hasMore": true
+      },
+      {
+        "archived": false,
+        "offset": 80,
+        "count": 20,
+        "hasMore": true
+      },
+      {
+        "archived": false,
+        "offset": 100,
+        "count": 20,
+        "hasMore": true
+      },
+      {
+        "archived": false,
+        "offset": 120,
+        "count": 20,
+        "hasMore": true
+      },
+      {
+        "archived": false,
+        "offset": 140,
+        "count": 20,
+        "hasMore": true
+      },
+      {
+        "archived": false,
+        "offset": 160,
+        "count": 20,
+        "hasMore": true
+      },
+      {
+        "archived": false,
+        "offset": 180,
+        "count": 2,
+        "hasMore": false
+      },
+      {
+        "archived": true,
+        "offset": 0,
+        "count": 0,
+        "hasMore": false
+      }
+    ],
+    "realDeletionExecuted": false
+  },
+  "privacy": "Only endpoint templates, schema keys, continuation flags and counts retained; no cookies, tokens, account/org/chat IDs, titles, summaries, or message content.",
+  "installedBrowserVerification": {
+    "version": "1.2.0",
+    "provider": "CLAUDE \u00b7 HISTORY TOOLS",
+    "loading": false,
+    "status": "Loaded 182 chats, including archives. All are set to Keep.",
+    "rows": 182,
+    "flatLists": 1,
+    "projectSections": 0,
+    "generalButtonPresent": false,
+    "selected": 0,
+    "log": "",
+    "errors": [],
+    "deleteRequests": 0,
+    "realDeletionExecuted": false
+  },
+  "tests": {
+    "coreTestsPassed": 26,
+    "chatgptBrowserSuite": "passed, mocked API/deletions",
+    "claudeBrowserSuite": "passed, mocked API/deletions",
+    "realDeletionExecuted": false
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FloatTab</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="header">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <rect x="5" y="7" width="17" height="14" rx="4" fill="currentColor" opacity=".55"/>
+            <rect x="10" y="11" width="17" height="14" rx="4" fill="currentColor"/>
+            <path d="M20 15h3v3" stroke="#4338ca" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="brand">
+          <div class="brand-row">
+            <h1>FloatTab</h1>
+            <span class="platform-chip" id="platform-chip">Detecting</span>
+          </div>
+          <p id="tagline">A focused window for the page you need</p>
+        </div>
+      </header>
+
+      <section class="hero" id="hero">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="hero-copy">
+          <span class="eyebrow" id="mode-label"></span>
+          <strong id="hero-title">Keep this page close</strong>
+          <span class="hero-description" id="hero-description"></span>
+        </div>
+      </section>
+
+      <button id="pip-btn" class="primary-button" type="button">
+        <svg id="btn-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect x="2" y="3" width="11" height="10" rx="2.5" fill="currentColor" opacity=".55"/>
+          <rect x="7" y="7" width="11" height="10" rx="2.5" fill="currentColor"/>
+        </svg>
+        <span id="btn-label">Open Float</span>
+      </button>
+
+      <div class="status" role="status" aria-live="polite">
+        <span class="status-dot" id="status-dot"></span>
+        <span id="status-text">Checking browser capabilities...</span>
+      </div>
+
+      <footer>
+        <span id="global-count">No active floats</span>
+        <span>FloatTab 3.0</span>
+      </footer>
+    </main>
+
+    <script src="../shared/api.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+# Optional developer dependencies and caches
+node_modules/
+__pycache__/
+*.py[cod]
+.cache/
+coverage/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+.codex/
+.agents/
+
+# Debugging profiles, scratch data, backups, and logs
+work/
+scratch/
+chrome-profile/
+test-profile/
+browser-profile/
+backups/
+*.bak
+*.log
+
+# Generated archives and OS/editor metadata
+*.zip
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

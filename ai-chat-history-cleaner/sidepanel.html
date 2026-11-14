@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chat History Cleaner</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><span id="provider" class="eyebrow">CHATGPT + CLAUDE · HISTORY TOOLS</span><h1>A little room<br>for what’s next.</h1><p>Keep the conversations that matter.<br>Choose the rest for deletion.</p></header>
+<main>
+<section class="connection"><span id="connection">Open a signed-in ChatGPT or Claude tab.</span><button id="load">Load chats</button></section>
+<p class="notice">Deletion cannot be undone here. Consider exporting your data first. This uses the selected website’s private API, which can change.</p>
+<section aria-label="Review conversations">
+<label id="searchLabel" for="search">Find a conversation or project</label><input type="search" id="search" placeholder="Search chats or projects…" autocomplete="off">
+<div class="toolbar"><button id="select" disabled>Select All</button><button id="invert" disabled>Invert</button><button id="keep" disabled>Keep All</button></div>
+<p id="selectionHint" class="hint">Selection tools affect all search matches, including collapsed sections. Select All marks them Delete.</p>
+<div id="counts">No chats loaded</div>
+<div id="list" aria-label="Conversations"><p class="empty">Your chats will appear here.<br>Every conversation starts on Keep.</p></div>
+</section>
+<section id="activity" hidden><label for="progress">Deletion progress</label><progress id="progress" value="0" max="1"></progress><p id="progressText" role="status"></p><button id="stop">Stop after current request</button></section>
+<p id="status" role="status" aria-live="polite">Ready when you are.</p>
+<details id="errors"><summary>Error & retry log (<span id="errorCount">0</span>)</summary><button id="download">Download log</button><pre id="log"></pre></details>
+</main>
+<footer><strong id="marked">0 marked for deletion</strong><button id="proceed" class="primary" disabled>Save &amp; Proceed</button></footer>
+<dialog id="confirm"><p id="confirmContext" class="eyebrow"></p><h2>Delete <span id="deleteCount">0</span> conversations?</h2><p>Only the marked conversations will be deleted. Kept chats stay in your history. This action cannot be undone here.</p><p>Keep this panel and the originating chat tab open until the operation finishes.</p><div class="dialogActions"><button id="cancel">Go back</button><button id="confirmDelete" class="danger">Delete marked chats</button></div></dialog>
+<script type="module" src="sidepanel.js"></script>
+</body></html>

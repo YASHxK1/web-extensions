@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="dashboard" aria-label="New tab dashboard">
+      <section class="time-panel" aria-label="Clock">
+        <time id="clock" class="clock"></time>
+        <div id="date" class="date"></div>
+      </section>
+
+      <div class="content-layout">
+        <section class="shortcuts-section" aria-label="Shortcuts">
+          <div id="grid" class="grid"></div>
+          <section class="widget todo-widget" aria-label="To-do list">
+            <div class="widget-header compact-header">
+              <h2>To-do</h2>
+            </div>
+            <form id="todo-form" class="inline-form">
+              <input id="todo-input" name="todo" type="text" autocomplete="off" maxlength="90" placeholder="Add a task" aria-label="Add a task">
+              <button class="small-action" type="submit">Add</button>
+            </form>
+            <ul id="todo-list" class="todo-list"></ul>
+          </section>
+        </section>
+
+        <aside class="widget-rail" aria-label="Dashboard widgets">
+          <section class="widget calendar-widget" aria-label="Mini calendar">
+            <div class="widget-header">
+              <button id="prev-month" class="ghost-button nav-button" type="button" aria-label="Previous month">‹</button>
+              <h2 id="calendar-title"></h2>
+              <button id="next-month" class="ghost-button nav-button" type="button" aria-label="Next month">›</button>
+            </div>
+            <div class="calendar-weekdays" aria-hidden="true">
+              <span>Sun</span>
+              <span>Mon</span>
+              <span>Tue</span>
+              <span>Wed</span>
+              <span>Thu</span>
+              <span>Fri</span>
+              <span>Sat</span>
+            </div>
+            <div id="calendar-grid" class="calendar-grid"></div>
+            <div id="calendar-note-host"></div>
+          </section>
+
+          <section class="widget countdown-widget" aria-label="Countdown tracker">
+            <div class="widget-header compact-header">
+              <h2>Countdowns</h2>
+              <button id="open-countdown-dialog" class="icon-button header-add" type="button" aria-label="Add countdown">+</button>
+            </div>
+            <div id="countdown-list" class="countdown-list"></div>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <div id="countdown-dialog" class="modal-overlay" hidden>
+      <section class="widget countdown-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="countdown-dialog-title">
+        <div class="widget-header compact-header">
+          <h2 id="countdown-dialog-title">Add countdown</h2>
+          <button id="close-countdown-dialog" class="icon-button compact-delete" type="button" aria-label="Close countdown form">×</button>
+        </div>
+        <form id="countdown-form" class="countdown-form">
+          <input id="countdown-label" name="label" type="text" autocomplete="off" maxlength="48" placeholder="Label" aria-label="Countdown label">
+          <input id="countdown-date" name="date" type="date" aria-label="Countdown date">
+          <div class="direction-toggle" role="group" aria-label="Countdown direction">
+            <label>
+              <input type="radio" name="direction" value="down" checked>
+              <span>Down</span>
+            </label>
+            <label>
+              <input type="radio" name="direction" value="up">
+              <span>Up</span>
+            </label>
+          </div>
+          <button id="countdown-submit" class="small-action" type="submit">Add</button>
+        </form>
+      </section>
+    </div>
+
+    <template id="shortcut-template">
+      <article class="tile shortcut-tile">
+        <a class="shortcut-link" target="_self" rel="noreferrer">
+          <span class="icon-wrap">
+            <img class="favicon" alt="">
+            <span class="fallback-icon" aria-hidden="true"></span>
+          </span>
+          <span class="shortcut-name"></span>
+        </a>
+        <div class="tile-actions" aria-label="Shortcut actions">
+          <button class="icon-button edit-button" type="button" title="Edit shortcut" aria-label="Edit shortcut">✎</button>
+          <button class="icon-button delete-button" type="button" title="Delete shortcut" aria-label="Delete shortcut">×</button>
+        </div>
+      </article>
+    </template>
+
+    <template id="form-template">
+      <form class="tile shortcut-form" novalidate>
+        <label>
+          <span>Name</span>
+          <input name="name" type="text" autocomplete="off" maxlength="32" required>
+        </label>
+        <label>
+          <span>URL</span>
+          <input name="url" type="url" autocomplete="off" inputmode="url" required>
+        </label>
+        <div class="form-error" role="alert"></div>
+        <div class="form-actions">
+          <button class="save-button" type="submit">Save</button>
+          <button class="cancel-button" type="button">Cancel</button>
+        </div>
+      </form>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
